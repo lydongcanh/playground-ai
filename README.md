@@ -1,5 +1,7 @@
 # AI Playground
 
+![Deployment status](https://github.com/lydongcanh/playground-ai/actions/workflows/main.yml/badge.svg)
+
 ## Run the project
 ```
 pnpm install
