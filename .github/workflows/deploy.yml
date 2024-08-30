@@ -13,32 +13,24 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up pnpm
-      run: |
-        export SHELL=/bin/bash
-        curl -fsSL https://get.pnpm.io/install.sh | sh -
-        echo "$HOME/.local/share/pnpm" >> $GITHUB_ENV
-        export PATH="$HOME/.local/share/pnpm:$PATH"
-      shell: bash
-
-    - name: Verify pnpm installation
-      run: |
-        pnpm --version
-      shell: bash
-
-    - name: Cache pnpm store
+    - name: Cache Node.js modules
       uses: actions/cache@v3
       with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('pnpm-lock.yaml') }}
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-pnpm-store-
+          ${{ runner.os }}-node-
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
 
     - name: Install dependencies
-      run: pnpm install
+      run: npm install
 
     - name: Build project
-      run: pnpm run build
+      run: npm run build
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
