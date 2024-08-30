@@ -24,6 +24,11 @@ pnpm run dev
 - store: Redux store, actions, and reducers (if using Redux)
 - types: TypeScript type definitions
 
+## AI resources
+- [Google AI Studio](https://aistudio.google.com/app/apikey)
+- https://groq.com/# - `not implemented`
+- https://www.arliai.com/ - `not implemented`
+- https://www.awanllm.com/ - `not implemented`
 
 
 
