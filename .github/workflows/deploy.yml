@@ -15,8 +15,10 @@ jobs:
 
     - name: Set up pnpm
       run: |
+        export SHELL=/bin/bash
         curl -fsSL https://get.pnpm.io/install.sh | sh -
         export PATH=$HOME/.local/share/pnpm:$PATH
+      shell: bash
 
     - name: Cache pnpm store
       uses: actions/cache@v3
