@@ -17,7 +17,13 @@ jobs:
       run: |
         export SHELL=/bin/bash
         curl -fsSL https://get.pnpm.io/install.sh | sh -
-        export PATH=$HOME/.local/share/pnpm:$PATH
+        echo "$HOME/.local/share/pnpm" >> $GITHUB_ENV
+        export PATH="$HOME/.local/share/pnpm:$PATH"
+      shell: bash
+
+    - name: Verify pnpm installation
+      run: |
+        pnpm --version
       shell: bash
 
     - name: Cache pnpm store
