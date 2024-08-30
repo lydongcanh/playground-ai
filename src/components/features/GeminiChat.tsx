@@ -56,13 +56,13 @@ const GeminiChat: React.FC = () => {
 
   return (
     <Container size="sm">
-      <Paper shadow="md" p="md" style={{ marginTop: 12 }}>
+      <Paper shadow="md" p="md">
         {error && (
           <Notification icon={xIcon} color="red" title="Error!">
             {error}
           </Notification>
         )}
-        <ScrollArea h="83vh" ref={scrollAreaRef}>
+        <ScrollArea h="85vh" ref={scrollAreaRef}>
           {messages.map((message, index) => (
             <Box
               key={index}
