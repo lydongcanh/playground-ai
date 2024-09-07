@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Markdown from "react-markdown";
-import { ComboboxItem, Select, NumberInput, Button, Paper, Stack } from "@mantine/core";
+import { ComboboxItem, Select, NumberInput, Button, Paper, Textarea, Stack } from "@mantine/core";
+import { IconDownload } from "@tabler/icons-react";
 
 const GymTrainingPlanRecommendation: React.FC = () => {
   const [fitnessLevel, setFitnessLevel] = useState<ComboboxItem | null>(null);
   const [trainingGoal, setTrainingGoal] = useState<ComboboxItem | null>(null);
   const [timeCommitment, setTimeCommitment] = useState<string | number>("60");
+  const [additionalContext, setAdditionalContext] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [trainingPlan, setTrainingPlan] = useState<string | null>(null);
 
@@ -17,6 +19,7 @@ const GymTrainingPlanRecommendation: React.FC = () => {
         fitnessLevel: Number(fitnessLevel?.value),
         trainingGoal: Number(trainingGoal?.value),
         timeCommitmentInMinute: Number(timeCommitment),
+        additionalContext,
       });
       console.info(response);
       setTrainingPlan(response.data);
@@ -50,7 +53,22 @@ const GymTrainingPlanRecommendation: React.FC = () => {
         onChange={(_value, option) => setTrainingGoal(option)}
       />
       <NumberInput label="Time commitment (in minutes)" value={timeCommitment} onChange={setTimeCommitment} min={1} />
-      <Button fullWidth onClick={onGetTrainingPlanClick} loading={isLoading}>
+      <Textarea
+        label="Additional context"
+        description="Available equipment, dietary restrictions, injury or limitations,..."
+        resize="vertical"
+        autosize
+        value={additionalContext}
+        onChange={(event) => setAdditionalContext(event.currentTarget.value)}
+      />
+      <Button
+        fullWidth
+        disabled={!fitnessLevel || !trainingGoal}
+        onClick={onGetTrainingPlanClick}
+        loading={isLoading}
+        loaderProps={{ type: "dots" }}
+        rightSection={<IconDownload size={14} />}
+      >
         Get Training Plan
       </Button>
       {trainingPlan && !isLoading && (
