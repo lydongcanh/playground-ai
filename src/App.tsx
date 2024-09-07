@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { AppShell, NavLink, Burger } from "@mantine/core";
-import { IconPdf, IconRobot } from "@tabler/icons-react";
+import { IconPdf, IconRobot, IconGymnastics } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import PDFViewer from "./components/features/PDFViewer";
 import GeminiChat from "./components/features/GeminiChat";
 import Header from "./components/layout/Header";
+import GymTrainingPlanRecommendation from "./components/features/GymTrainingPlanRecommendation";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
   const [navId, setNavId] = useState<number>(0);
 
   const Main = () => {
-    return navId === 0 ? <PDFViewer /> : <GeminiChat />;
+    if (navId === 0) {
+      return <GymTrainingPlanRecommendation />;
+    } else if (navId === 1) {
+      return <PDFViewer />;
+    } else {
+      return <GeminiChat />;
+    }
   };
 
   return (
@@ -22,16 +29,23 @@ function App() {
       </AppShell.Header>
       <AppShell.Navbar>
         <NavLink
-          active={navId === 0}
           variant="filled"
+          active={navId === 0}
           onClick={() => setNavId(0)}
+          label="Gym"
+          leftSection={<IconGymnastics size="1rem" stroke={1.5} />}
+        />
+        <NavLink
+          active={navId === 1}
+          variant="filled"
+          onClick={() => setNavId(1)}
           label="Documents"
           leftSection={<IconPdf size="1rem" stroke={1.5} />}
         />
         <NavLink
           variant="filled"
-          active={navId === 1}
-          onClick={() => setNavId(1)}
+          active={navId === 2}
+          onClick={() => setNavId(2)}
           label="Chat"
           leftSection={<IconRobot size="1rem" stroke={1.5} />}
         />

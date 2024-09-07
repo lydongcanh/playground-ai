@@ -8,7 +8,7 @@ export default function Header() {
         <IconAi size="1.5rem" />
       </Avatar>
       <Title order={3}>Playground</Title>
-      <Code style={{ marginTop: 4 }}>v0.1.0</Code>
+      <Code style={{ marginTop: 4 }}>v0.2.0</Code>
     </Group>
   );
 }
