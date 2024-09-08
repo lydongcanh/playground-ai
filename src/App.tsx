@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AppShell, NavLink, Burger } from "@mantine/core";
-import { IconPdf, IconRobot, IconGymnastics } from "@tabler/icons-react";
+import { IconPdf, IconGymnastics, IconMessage } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import PDFViewer from "./components/features/PDFViewer";
 import GeminiChat from "./components/features/GeminiChat";
@@ -32,7 +32,7 @@ function App() {
           variant="filled"
           active={navId === 0}
           onClick={() => setNavId(0)}
-          label="Gym"
+          label="Fitness Coach"
           leftSection={<IconGymnastics size="1rem" stroke={1.5} />}
         />
         <NavLink
@@ -47,7 +47,7 @@ function App() {
           active={navId === 2}
           onClick={() => setNavId(2)}
           label="Chat"
-          leftSection={<IconRobot size="1rem" stroke={1.5} />}
+          leftSection={<IconMessage size="1rem" stroke={1.5} />}
         />
       </AppShell.Navbar>
       <AppShell.Main>
