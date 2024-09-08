@@ -72,7 +72,7 @@ const GymTrainingPlanRecommendation: React.FC = () => {
         Get Training Plan
       </Button>
       {trainingPlan && !isLoading && (
-        <Paper shadow="xs" p="xl">
+        <Paper shadow="xl" p="xl">
           <Markdown>{trainingPlan}</Markdown>
         </Paper>
       )}
