@@ -13,7 +13,7 @@ export default function Header() {
         </Avatar>
       )}
       <Title order={3}>Playground</Title>
-      <Code style={{ marginTop: 4 }}>v0.2.0</Code>
+      <Code style={{ marginTop: 4 }}>v0.3.0</Code>
     </Group>
   );
 }
