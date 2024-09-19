@@ -8,7 +8,7 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
 const theme = createTheme({
-  primaryColor: "teal",
+  primaryColor: "violet",
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
