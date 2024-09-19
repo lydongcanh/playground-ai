@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <Group justify={isMobile ? "center" : "flex-start"} style={isMobile ? { marginTop: -30, marginLeft: 30 } : {}}>
       {!isMobile && (
-        <Avatar color="blue" style={{ marginLeft: 8 }}>
+        <Avatar color="teal" style={{ marginLeft: 8 }}>
           <IconAi size="1.5rem" />
         </Avatar>
       )}
