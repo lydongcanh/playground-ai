@@ -51,6 +51,7 @@ function App() {
               active={navId === 2}
               onClick={() => setNavId(2)}
               label="Chat"
+              disabled
               leftSection={<IconMessage size="1rem" stroke={1.5} />}
             />
           </Stack>
