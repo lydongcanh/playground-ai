@@ -31,7 +31,7 @@ function App() {
       </AppShell.Header>
       <AppShell.Navbar>
         <Stack justify="space-between" style={{ height: "100%" }}>
-          <Stack>
+          <Stack gap={0}>
             <NavLink
               variant="filled"
               active={navId === 0}
