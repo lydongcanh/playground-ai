@@ -14,7 +14,7 @@ interface Redaction {
   pageIndex: number;
 }
 
-const PDFViewer: React.FC = () => {
+const DocumentsTranslation: React.FC = () => {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -184,4 +184,4 @@ const PDFViewer: React.FC = () => {
   );
 };
 
-export default PDFViewer;
+export default DocumentsTranslation;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AppShell, NavLink, Burger, Button, Avatar, Text, Stack } from "@mantine/core";
-import { IconPdf, IconBarbell, IconMessage, IconLogin, IconLogout } from "@tabler/icons-react";
+import { IconLanguage, IconBarbell, IconMessage, IconLogin, IconLogout } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
-import PDFViewer from "./components/features/PDFViewer";
+import DocumentsTranslation from "./components/features/DocumentsTranslation";
 import GeminiChat from "./components/features/GeminiChat";
 import Header from "./components/layout/Header";
 import GymTrainingPlanRecommendation from "./components/features/GymTrainingPlanRecommendation";
@@ -17,14 +17,14 @@ function App() {
     if (navId === 0) {
       return <GymTrainingPlanRecommendation />;
     } else if (navId === 1) {
-      return <PDFViewer />;
+      return <DocumentsTranslation />;
     } else {
       return <GeminiChat />;
     }
   };
 
   return (
-    <AppShell header={{ height: 54, offset: true }} padding="md" navbar={{ width: 200, breakpoint: "sm", collapsed: { mobile: !opened } }}>
+    <AppShell header={{ height: 54, offset: true }} padding="md" navbar={{ width: 210, breakpoint: "sm", collapsed: { mobile: !opened } }}>
       <AppShell.Header style={{ padding: 8 }}>
         <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         <Header />
@@ -43,8 +43,8 @@ function App() {
               active={navId === 1}
               variant="filled"
               onClick={() => setNavId(1)}
-              label="Documents"
-              leftSection={<IconPdf size="1rem" stroke={1.5} />}
+              label="Documents Translation"
+              leftSection={<IconLanguage size="1rem" stroke={1.5} />}
             />
             <NavLink
               variant="filled"
