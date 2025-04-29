@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AppShell, NavLink, Burger, Button, Avatar, Text, Stack } from "@mantine/core";
-import { IconBarbell, IconMessage, IconLogin, IconLogout, IconBrandBlackberry, IconFileCode } from "@tabler/icons-react";
+import { IconBarbell, IconMessage, IconLogin, IconLogout, IconBrandBlackberry, IconFileCode, IconWaterpolo } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
 import DocumentsTranslation from "./components/features/DocumentsRedaction";
@@ -8,6 +8,7 @@ import GeminiChat from "./components/features/GeminiChat";
 import Header from "./components/layout/Header";
 import GymTrainingPlanRecommendation from "./components/features/GymTrainingPlanRecommendation";
 import DocumentsComparison from "./components/features/DocumentsComparison";
+import DocumentsWatermarking from "./components/features/DocumentsWatermarking";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
@@ -21,13 +22,15 @@ function App() {
       return <DocumentsTranslation />;
     } else if (navId === 2) {
       return <DocumentsComparison />;
+    } else if (navId === 3) {
+      return <DocumentsWatermarking />;
     } else {
       return <GeminiChat />;
     }
   };
 
   return (
-    <AppShell header={{ height: 54, offset: true }} padding="md" navbar={{ width: 210, breakpoint: "sm", collapsed: { mobile: !opened } }}>
+    <AppShell header={{ height: 54, offset: true }} padding="md" navbar={{ width: 225, breakpoint: "sm", collapsed: { mobile: !opened } }}>
       <AppShell.Header style={{ padding: 8 }}>
         <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         <Header />
@@ -57,9 +60,16 @@ function App() {
               leftSection={<IconFileCode size="1rem" stroke={1.5} />}
             />
             <NavLink
-              variant="filled"
               active={navId === 3}
+              variant="filled"
               onClick={() => setNavId(3)}
+              label="Documents Watermarking"
+              leftSection={<IconWaterpolo size="1rem" stroke={1.5} />}
+            />
+            <NavLink
+              variant="filled"
+              active={navId === 4}
+              onClick={() => setNavId(4)}
               label="Chat"
               disabled
               leftSection={<IconMessage size="1rem" stroke={1.5} />}
