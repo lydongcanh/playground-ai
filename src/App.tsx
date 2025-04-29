@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { AppShell, NavLink, Burger, Button, Avatar, Text, Stack } from "@mantine/core";
-import { IconLanguage, IconBarbell, IconMessage, IconLogin, IconLogout } from "@tabler/icons-react";
+import { IconBarbell, IconMessage, IconLogin, IconLogout, IconBrandBlackberry, IconFileCode } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
-import DocumentsTranslation from "./components/features/DocumentsTranslation";
+import DocumentsTranslation from "./components/features/DocumentsRedaction";
 import GeminiChat from "./components/features/GeminiChat";
 import Header from "./components/layout/Header";
 import GymTrainingPlanRecommendation from "./components/features/GymTrainingPlanRecommendation";
+import DocumentsComparison from "./components/features/DocumentsComparison";
 
 function App() {
   const [opened, { toggle }] = useDisclosure();
@@ -18,6 +19,8 @@ function App() {
       return <GymTrainingPlanRecommendation />;
     } else if (navId === 1) {
       return <DocumentsTranslation />;
+    } else if (navId === 2) {
+      return <DocumentsComparison />;
     } else {
       return <GeminiChat />;
     }
@@ -43,13 +46,20 @@ function App() {
               active={navId === 1}
               variant="filled"
               onClick={() => setNavId(1)}
-              label="Documents Translation"
-              leftSection={<IconLanguage size="1rem" stroke={1.5} />}
+              label="Documents Redaction"
+              leftSection={<IconBrandBlackberry size="1rem" stroke={1.5} />}
+            />
+            <NavLink
+              active={navId === 2}
+              variant="filled"
+              onClick={() => setNavId(2)}
+              label="Documents Comparison"
+              leftSection={<IconFileCode size="1rem" stroke={1.5} />}
             />
             <NavLink
               variant="filled"
-              active={navId === 2}
-              onClick={() => setNavId(2)}
+              active={navId === 3}
+              onClick={() => setNavId(3)}
               label="Chat"
               disabled
               leftSection={<IconMessage size="1rem" stroke={1.5} />}
